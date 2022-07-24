@@ -4,14 +4,14 @@ export const PostItem = ({ post }) => {
   const { title, body } = post;
 
   return (
-    <div className="post">
+    <li className="post">
       <div className="post__content">
-        <strong>{title}</strong>
-        <div>{body}</div>
+        <h4>
+          <strong>{title}</strong>
+        </h4>
+        <p>{body}</p>
       </div>
-      <div className="post__btns">
-        <button>Удалить</button>
-      </div>
-    </div>
+      <button>Удалить</button>
+    </li>
   );
 };
