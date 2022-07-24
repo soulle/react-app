@@ -12,12 +12,15 @@ function App() {
   ]);
 
   const [title, setTitle] = useState("");
-  const bodyInputRef = useRef();
+  const [body, setBody] = useState("");
 
   const addNewPost = (e) => {
     e.preventDefault();
-    console.log("title", title);
-    console.log("body", bodyInputRef.current.value);
+
+    const newPost = { id: Date.now(), title, body };
+    setPosts([...posts, newPost]);
+    setTitle("");
+    setBody("");
   };
 
   return (
@@ -29,7 +32,12 @@ function App() {
           type="text"
           placeholder="Название"
         />
-        <MyInput ref={bodyInputRef} type="text" placeholder="Описание" />
+        <MyInput
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          type="text"
+          placeholder="Описание"
+        />
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
       <PostList posts={posts} title="Список постов" />
